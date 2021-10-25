@@ -1,0 +1,24 @@
+diff --git a/node_modules/pdfjs-dist/legacy/build/pdf.js b/node_modules/pdfjs-dist/legacy/build/pdf.js
+index 9331e46..2eead3d 100644
+--- a/node_modules/pdfjs-dist/legacy/build/pdf.js
++++ b/node_modules/pdfjs-dist/legacy/build/pdf.js
+@@ -2610,7 +2610,7 @@ exports.isNodeJS = void 0;
+ 
+ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+ 
+-var isNodeJS = (typeof process === "undefined" ? "undefined" : _typeof(process)) === "object" && process + "" === "[object process]" && !process.versions.nw && !(process.versions.electron && process.type && process.type !== "browser");
++var isNodeJS = (typeof process === "undefined" ? "undefined" : _typeof(process)) === "object" && process + "" === "[object process]" && !process.versions.nw && !(process.versions.electron && process.type && process.type !== "browser" && process.type !== "worker");
+ exports.isNodeJS = isNodeJS;
+ 
+ /***/ }),
+@@ -15169,7 +15169,9 @@ var RadialAxialShadingPattern = /*#__PURE__*/function (_BaseShadingPattern) {
+       tmpCtx.fillStyle = grad;
+       tmpCtx.fill();
+       var pattern = ctx.createPattern(tmpCanvas.canvas, "repeat");
+-      pattern.setTransform(createMatrix(ctx.mozCurrentTransformInverse));
++      if (typeof document != "undefined") {
++        pattern.setTransform(createMatrix(ctx.mozCurrentTransformInverse));
++      }
+       return pattern;
+     }
+   }]);
