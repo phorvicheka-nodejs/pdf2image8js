@@ -13,7 +13,7 @@
   "license": "ISC",
   "dependencies": {
     "assert": "^2.0.0",
-    "canvas": "^2.8.0",
+    "canvas": "^2.9.0",
     "patch-package": "^6.4.7",
     "pdfjs-dist": "2.9.359",
     "postinstall-postinstall": "^2.1.0"
